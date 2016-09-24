@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Sample app to test build server",
+  "private": true,
+  "main": "app.js",
+  "scritps": {
+    "test": "grunt test"
+  },
+  "author": "vkkashya@ncsu.edu",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "grunt": "^0.4.5",
+	  "grunt-cli": "^0.1.13",
+    "grunt-mocha-test": "^0.12.7",
+    "chai": "^3.4.0"
+  }
+}
