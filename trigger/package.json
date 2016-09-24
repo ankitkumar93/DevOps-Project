@@ -1,0 +1,11 @@
+{
+  "name": "trigger-milestone1",
+  "version": "1.0.0",
+  "description": "Build Server Trigger",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ankit Kumar",
+  "license": "ISC"
+}
