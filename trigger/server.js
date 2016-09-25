@@ -1,7 +1,6 @@
 // Imports
 var express = require('express');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 var path = require('path');
 
 // Controllers
@@ -15,10 +14,6 @@ const db_name='build_devops';
 // Setup Express
 var app = express();
 app.use(express.static(path.join(__dirname, 'static')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
 // Connect to DB
 mongoose.connect('mongodb://localhost/' + db_name);
@@ -38,7 +33,7 @@ app.get('/log', function(req, res){
     res.sendFile('log.html', {root: path.join(__dirname, 'views')});
 });
 
-app.post('/build', function(req, res){
+app.get('/build', function(req, res){
     build(req, res);
 });
 
