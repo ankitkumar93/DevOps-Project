@@ -10,7 +10,7 @@ function preBuild() {
 }
 
 // Build Function
-function onBuild(res) {
+function onBuild(req, res) {
 
     // Pre Build
     preBuild();
@@ -30,11 +30,12 @@ function postBuild(err, stdout, stderr) {
     }
 
     var now = new Date();
+    var id = now.getTime();
     var timestamp = dateformat(now);
     var status = 'Success';
     var log = stdout;
 
-    history.addBuild(timestamp, log, status, 'develop', function(err){
+    history.addBuild(id, timestamp, log, status, 'develop', function(err){
         if (err)
             console.log(err);
         else
