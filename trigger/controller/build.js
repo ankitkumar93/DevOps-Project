@@ -3,7 +3,7 @@ var dateformat = require('dateformat');
 var history = require('./history.js');
 var parse = require('./parser.js');
 
-const build_cmd = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
+const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/';
 
 // Pre Build Function
 function preBuild() {
@@ -17,11 +17,16 @@ function onBuild(req, res) {
     preBuild();
 
     // Build
-    var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, postBuild);
+    if (typeof req.body.branch == 'undefined') {
+        res.send("Error: Please send a proper POST request!")
+    }else{
+        var build_cmd = build_cmd_base + req.body.branch;
+        var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, postBuild);
 
-    // Bind Streams
-    build_process.stdout.pipe(res);
-    build_process.stderr.pipe(process.stderr);
+        // Bind Streams
+        build_process.stdout.pipe(res);
+        build_process.stderr.pipe(process.stderr);
+    }
 }
 
 // Post Build Callback
