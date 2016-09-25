@@ -17,10 +17,10 @@ function onBuild(req, res) {
     preBuild();
 
     // Build
-    if (typeof req.params.branch == 'undefined') {
-        res.send("Error: Please send a proper POST request!")
+    if (typeof req.query.branch == 'undefined') {
+        res.send("Error: Please send a proper GET request!")
     }else{
-        var build_cmd = build_cmd_base + req.params.branch;
+        var build_cmd = build_cmd_base + req.query.branch;
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, postBuild);
 
         // Bind Streams
