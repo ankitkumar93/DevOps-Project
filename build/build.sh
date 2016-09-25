@@ -1,6 +1,4 @@
-git clone https://github.com/ankitkumar93/DevOps-Project
-cd DevOps-Project
-git checkout issue_10
-cd Tests
+git clone https://github.com/vipulkashyap111/test-app-DevOpsM1
+cd test-app-DevOpsM1
 npm install
 grunt test
