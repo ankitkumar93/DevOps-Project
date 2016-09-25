@@ -1,43 +1,47 @@
 // Imports
-var http = require('http');
-var exec = require('child_process').exec;
-var fs = require('fs');
+var express = require('express');
+var mongoose = require('mongoose');
+var path = require('path');
+
+// Controllers
+var build = require('./controller/build.js');
+var history = require('./controller/history.js');
 
 // Globals
 const port = 8000;
-const build_cmd = 'ls';
+const db_name='build_devops';
 
-// Log File
-const logfile = 'build_report.log';
+// Setup Express
+var app = express();
+app.use(express.static(path.join(__dirname, 'static')));
+
+// Connect to DB
+mongoose.connect('mongodb://localhost/' + db_name);
 
 // Server
-var server = http.createServer(onRequest);
-server.listen(port, function(){
+app.listen(port, function(){
     console.log("Server running on: http://127.0.0.0:"+port);
 });
 
-// Request Callback
-function onRequest(req, res) {
-    console.log("Starting Build...");
+// Route Requests
+// Views
+app.get('/', function(req, res){
+    res.sendFile('history.html', {root: path.join(__dirname, 'views')});
+});
 
-    // Build
-    var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, onBuild);
+app.get('/log', function(req, res){
+    res.sendFile('log.html', {root: path.join(__dirname, 'views')});
+});
 
-    // Bind Streams
-    build_process.stdout.pipe(res);
-    build_process.stderr.pipe(process.stderr);
+app.get('/build', function(req, res){
+    build(req, res);
+});
 
-    build_process.on('exit', function(){
-        console.log('Build Completed');
-        return true;
-    });
-}
+// APIs
+app.get('/api/log/:id', function(req, res){
+    history.getLog(req.params.id, res);
+});
 
-// Build Callback
-function onBuild(err, stdout, stderr) {
-    if (err){
-        console.log(err);
-    }
-
-    fs.writeFileSync(logfile, stdout);
-}
+app.get('/api/history', function(req, res){
+    history.getHistory(res);
+});
