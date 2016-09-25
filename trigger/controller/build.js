@@ -2,7 +2,7 @@ var exec = require('child_process').exec;
 var dateformat = require('dateformat');
 var history = require('./history.js');
 
-const build_cmd = 'ls';
+const build_cmd = 'sudo docket run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
 
 // Pre Build Function
 function preBuild() {
