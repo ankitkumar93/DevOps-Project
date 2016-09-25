@@ -3,7 +3,7 @@ var dateformat = require('dateformat');
 var history = require('./history.js');
 var parse = require('./parser.js');
 
-const build_cmd = 'sudo docket run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
+const build_cmd = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
 
 // Pre Build Function
 function preBuild() {
