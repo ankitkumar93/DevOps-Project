@@ -1,8 +1,8 @@
 # DevOps Project
-Developers:
+Team:
  - Ankit Kumar (akumar18)
  - Vipul Kashyap (vkashya)
  - Ashutosh Chaturvedi (achatur)
 
-# Ongoing
-Milestone - 1
+# Milestones
+[Milestone - 1] (https://github.com/ankitkumar93/DevOps-Project/tree/m1)
