@@ -6,7 +6,7 @@ var email_config = {}
     },
     options: {
         from: '"DevOps Support" <team.mail.devops.build@gmail.com>',
-        to: 'vipulkashyap111@gmail.com',
+        to: 'ankit.technited@gmail.com',
         subjectfail: 'Build Status - Fail',
         subjectpass: 'Build Status - Success',
         textfail: 'Your most recently build failed',

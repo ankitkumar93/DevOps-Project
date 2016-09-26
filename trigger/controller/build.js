@@ -2,6 +2,7 @@ var exec = require('child_process').exec;
 var dateformat = require('dateformat');
 var history = require('./history.js');
 var parse = require('./parser.js');
+var mailer = require('./mailer.js');
 
 const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/';
 
@@ -45,10 +46,13 @@ function postBuild(err, stdout, stderr) {
     history.addBuild(id, timestamp, log, status, 'develop', function(err){
         if (err)
             console.log(err);
-        else
+        else{
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
+            mailer(status, id);
+        }
     });
+
 }
 
 module.exports = onBuild;
