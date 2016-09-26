@@ -15,7 +15,7 @@ function sendMail(status, logid){
     
     var textToSend;
     var subjectToSend;
-    if (status == failure){
+    if (status == 'failure'){
         textToSend = email_config.options.textfail;
         subjectToSend = email_config.options.subjectfail;
     } else {
