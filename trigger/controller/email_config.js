@@ -1,4 +1,4 @@
-var email_config = {}
+var email_config = {
     auth: {
         service: 'Gmail',
         user: 'team.mail.devops.build@gmail.com',
@@ -10,7 +10,7 @@ var email_config = {}
         subjectfail: 'Build Status - Fail',
         subjectpass: 'Build Status - Success',
         textfail: 'Your most recently build failed',
-        textpass: 'Your most recently build was successfull'
+        textpass: 'Your most recently build was successfull',
         logurl: '54.213.145.239:8000/log?id='
     }
 };
