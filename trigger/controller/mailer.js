@@ -23,14 +23,15 @@ function sendMail(status, logid){
         subjectToSend = email_config.options.subjectpass;
     }
 
+    textToSend += '<br> Log File: ' + logurl;
+
     var logurl = email_config.options.logurl + logid;
 
     var mailOptions = {
         from: email_config.options.from,
         to: email_config.options.to,
-        subject: email_config.options.subjectToSend,
-        text: textToSend,
-        html: 'Log File: ' + logurl
+        subject: subjectToSend,
+        text: textToSend
     };
 
     transporter.sendMail(mailOptions, function(error, info){
