@@ -9,8 +9,8 @@ var email_config = {
         to: 'ankit.technited@gmail.com',
         subjectfail: 'Build Status - Fail',
         subjectpass: 'Build Status - Success',
-        textfail: 'Your most recently build failed',
-        textpass: 'Your most recently build was successfull',
+        textfail: 'Your most recently build failed.',
+        textpass: 'Your most recently build was successfull.',
         logurl: '54.213.145.239:8000/log?id='
     }
 };

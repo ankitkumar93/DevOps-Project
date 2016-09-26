@@ -25,7 +25,7 @@ function sendMail(status, logid){
 
     var logurl = email_config.options.logurl + logid;
 
-    textToSend += '</br> Log File: ' + logurl;
+    textToSend += 'Log File: ' + logurl;
 
     var mailOptions = {
         from: email_config.options.from,
