@@ -15,4 +15,4 @@ var email_config = {
     }
 };
 
-module.exports = auth_data;
+module.exports = email_config;
