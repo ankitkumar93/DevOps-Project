@@ -1,0 +1,9 @@
+#!/bin/bash
+git push;
+branch=$(git rev-parse --abbrev-ref HEAD);
+if [ $branch == "develop" ]; then
+        open http://54.213.145.239:8000/build?branch=develop
+elif [ $branch == "master" ]; then
+        open http://54.213.145.239:8000/build?branch=master
+fi
+
