@@ -28,8 +28,9 @@ function sendMail(status, logid){
     var mailOptions = {
         from: email_config.options.from,
         to: email_config.options.to,
-        subject: email_config.options.subject + textToSend,
-        html: '<a href=' + logurl + '>Log File</a>'
+        subject: email_config.options.subjectToSend,
+        text: textToSend,
+        html: 'Log File: ' + logurl
     };
 
     transporter.sendMail(mailOptions, function(error, info){
