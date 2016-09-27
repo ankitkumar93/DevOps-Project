@@ -16,6 +16,9 @@ function onBuild(req, res) {
         var cmd_name = "build_" + req.query.branch +".sh";
         var build_cmd = build_cmd_base + cmd_name;
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
+            build_process.stdout.write("BUILD: Branch - " + branch + "\n");
+            build_process.stdout.write("BUILD: Completed - " + timestamp + "\n");
+            build_process.stdout.write("BUILD: Status - " + status + "\n");
             postBuild(err, stdout, req.query.branch);
         });
 
@@ -36,12 +39,13 @@ function postBuild(err, stdout, branch) {
     var timestamp = dateformat(now);
     var log = stdout;
     var status = parse(log);
+    log.replace("\n", "</br>");
 
-    history.addBuild(id, timestamp, log, status, 'develop', function(err){
+    history.addBuild(id, timestamp, log, status, branch, function(err){
         if (err)
             console.log(err);
         else{
-            process.stdout.write("BUILD: Branch - " + branch);
+            console.log("BUILD: Branch - " + branch);
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
             mailer(status, id);
