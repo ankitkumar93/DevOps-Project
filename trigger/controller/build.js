@@ -6,12 +6,6 @@ var mailer = require('./mailer.js');
 
 const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/';
 
-// Pre Build Function
-function preBuild(build_process, branch) {
-    build_process.stdout.write("BUILD: Initializing");
-    build_process.stdout.write("BUILD: Branch - " + branch)
-}
-
 // Build Function
 function onBuild(req, res) {
 
@@ -21,7 +15,10 @@ function onBuild(req, res) {
     }else{
         var cmd_name = "build_" + req.query.branch +".sh";
         var build_cmd = build_cmd_base + cmd_name;
-        var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, postBuild);
+        var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
+            build_process.stdout.write("BUILD: Branch - " + branch);
+            postBuild(err, stdout, stderr);
+        });
 
         preBuild(build_process, req.query.branch);
 
