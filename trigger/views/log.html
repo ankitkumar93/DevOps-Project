@@ -20,6 +20,13 @@
 
         <!-- Angular Script -->
         <script src="js/historyApp.js"></script>
+
+        <!-- Custom Style -->
+        <style>
+            pre{
+                white-space: pre-line;
+            }
+        </style>
     </head>
 
     <body>
@@ -31,7 +38,7 @@
 
             <div ng-app="historyApp">
                 <div data-ng-controller="LogController" data-ng-init="init()">
-                    {{log}}
+                    <pre>{{log}}</pre>
                 <div>
             </div>
 
