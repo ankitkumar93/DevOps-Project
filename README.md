@@ -7,7 +7,7 @@ Developers:
 ##Milestone - 1  
 
 ###Build Section  
-Explain setup. Used AWS, Docker bla bla bla  
+
 ###Objectives:
 - [x] [Triggered Build](#1)
 - [x] [Dependency Management + Build Script Execution](#2)
@@ -27,4 +27,4 @@ Also an email is sent by [mailer](https://github.com/ankitkumar93/DevOps-Project
 ####<a name="4"></a>Multiple Branches, Multiple Jobs  
 There are 2 branches running for the application: master and develop, hence there are 2 build scripts [build_develop.sh](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/build_develop.sh) and [build_master.sh](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/build_master.sh) which are triggered depending on the branch we commit to.
 ####<a name="5"></a>Build History and Display over HTTP  
-We've created a simple UI using angular, bootstrap and jquery to display the [history](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/history.js) of build execution with timestamp, build status, branch on which build was triggered and a link to the log file. History can be viewed [here](http://54.213.145.239:8000/api/history)
+We've created a simple UI using angular, bootstrap and jquery to display the [history](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/history.js) of build execution with timestamp, build status, branch on which build was triggered and a link to the log file. History can be viewed [here](http://54.213.145.239:8000/)
