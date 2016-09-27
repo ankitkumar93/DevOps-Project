@@ -8,6 +8,7 @@ function parse(data){
     console.log("Inside add rule",tag);
     if(tag !== '0 failing'){
       result = "failure";
+      console.log(tag);
     }
     return tag;
   });
