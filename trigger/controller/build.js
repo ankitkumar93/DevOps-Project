@@ -6,6 +6,12 @@ var mailer = require('./mailer.js');
 
 const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/';
 
+// Pre Build Function
+function preBuild(branch){
+    console.log("BUILD: Initializing");
+    console.log("BUILD: Branch - " + branch);
+}
+
 // Build Function
 function onBuild(req, res) {
 
@@ -15,13 +21,11 @@ function onBuild(req, res) {
     if (typeof branch == 'undefined') {
         res.send("Error: Please send a proper GET request!")
     }else{
+        preBuild(branch);
         var cmd_name = "build_" + branch +".sh";
         var build_cmd = build_cmd_base + cmd_name;
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
-            build_process.stdout.write("BUILD: Branch - " + branch + "\n");
-            build_process.stdout.write("BUILD: Completed - " + timestamp + "\n");
-            build_process.stdout.write("BUILD: Status - " + status + "\n");
-            postBuild(err, stdout, req.query.branch);
+            postBuild(err, stdout, branch);
         });
 
         // Bind Streams
@@ -50,7 +54,7 @@ function postBuild(err, stdout, branch) {
             console.log("BUILD: Branch - " + branch);
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
-            mailer(status, id);
+            mailer(status, branch, id);
         }
     });
 

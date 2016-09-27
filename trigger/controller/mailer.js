@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({
 
 
 // Send Mail
-function sendMail(status, logid){
+function sendMail(status, logid, branch){
     
     var textToSend;
     var subjectToSend;
@@ -25,6 +25,7 @@ function sendMail(status, logid){
 
     var logurl = email_config.options.logurl + logid;
 
+    subjectToSend += branch;
     textToSend += 'Log File: ' + logurl;
 
     var mailOptions = {
