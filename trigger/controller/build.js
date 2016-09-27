@@ -42,8 +42,9 @@ function postBuild(err, stdout, stderr) {
     var timestamp = dateformat(now);
     var log = stdout;
     var status = parse(log);
+    var formatted_log = log.replace('\n', '</br>')
 
-    history.addBuild(id, timestamp, log, status, 'develop', function(err){
+    history.addBuild(id, timestamp, formatted_log, status, 'develop', function(err){
         if (err)
             console.log(err);
         else{
