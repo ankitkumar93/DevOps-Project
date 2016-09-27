@@ -23,7 +23,7 @@ angular.module('historyApp', ['ngRoute'])
             alert("Invalid log ID");
         $http.get("api/log/"+id)
         .then(function(res){
-            var log = res.data.log.replace('\n', '<br>')
+            var log = res.data.log.replace(/\n/g, "<br />")
             $scope.log = log;
         }, function(err){
             alert("Error loading log");
