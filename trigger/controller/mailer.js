@@ -11,7 +11,7 @@ var transporter = nodemailer.createTransport({
 
 
 // Send Mail
-function sendMail(status, logid, branch){
+function sendMail(status, branch, logid){
     
     var textToSend;
     var subjectToSend;
