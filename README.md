@@ -17,7 +17,7 @@ Explain setup. Used AWS, Docker bla bla bla
 
 ####<a name="1"></a>Triggered Build  
 The Build server we created is deployed on AWS and is accessible at http://54.213.145.239:8000.  
-We created a dummy project [Link](https://github.com/vipulkashyap111/test-app-DevOpsM1/tree/master) (the repo is public so we could clone it in our build script without passing authentication details) using Node.js, which is the application whose commits trigger the build. The code for git post-commit hook is available [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/Tests/git-hook). 
+We created a dummy [project](https://github.com/vipulkashyap111/test-app-DevOpsM1/tree/master) (the repo is public so we could clone it in our build script without passing authentication details) using Node.js, which is the application whose commits trigger the build. The code for git post-commit hook is available [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/Tests/git-hook). 
 ####<a name="2"></a>Dependency Management + Build Script Execution  
 We used Docker to enable clean build everytime code is committed to the application. The Docker instance is deployed on AWS.
 The Dockerfile script [Link](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/Dockerfile) is triggered upon commit which installs all the dependencies required to run the application. 
