@@ -20,7 +20,7 @@ The Build server we created is deployed on AWS and is accessible at http://54.21
 We created a dummy [project](https://github.com/vipulkashyap111/test-app-DevOpsM1/tree/master) (the repo is public so we could clone it in our build script without passing authentication details) using Node.js, which is the application whose commits trigger the build. The code for git post-commit hook is available [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/Tests/git-hook). 
 ####<a name="2"></a>Dependency Management + Build Script Execution  
 We used Docker to enable clean build everytime code is committed to the application. The Docker instance is deployed on AWS.
-The Dockerfile script [Link](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/Dockerfile) is triggered upon commit which installs all the dependencies required to run the application. 
+The Dockerfile [script](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/Dockerfile) is triggered upon commit which installs all the dependencies required to run the application. 
 ####<a name="3"></a>Build Status + External Post-Build Job Triggers  
 Once the branch specific build has been triggered by [build](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/build.js), we run unit tests on the delivered code to look for failures, the logs are collected and sent to [parser](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/parser.js) which yields either "success" or "failure" and display it on the site.
 Also an email is sent by [mailer](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/mailer.js) which sends customized emails to the developer based on success or failure of the build.
