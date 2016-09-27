@@ -9,11 +9,13 @@ const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/v
 // Build Function
 function onBuild(req, res) {
 
+    var branch = req.query.branch;
+
     // Build
-    if (typeof req.query.branch == 'undefined') {
+    if (typeof branch == 'undefined') {
         res.send("Error: Please send a proper GET request!")
     }else{
-        var cmd_name = "build_" + req.query.branch +".sh";
+        var cmd_name = "build_" + branch +".sh";
         var build_cmd = build_cmd_base + cmd_name;
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
             build_process.stdout.write("BUILD: Branch - " + branch + "\n");
