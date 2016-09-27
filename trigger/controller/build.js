@@ -16,11 +16,8 @@ function onBuild(req, res) {
         var cmd_name = "build_" + req.query.branch +".sh";
         var build_cmd = build_cmd_base + cmd_name;
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
-            build_process.stdout.write("BUILD: Branch - " + branch);
-            postBuild(err, stdout, stderr);
+            postBuild(err, stdout, req.query.branch);
         });
-
-        preBuild(build_process, req.query.branch);
 
         // Bind Streams
         build_process.stdout.pipe(res);
@@ -29,7 +26,7 @@ function onBuild(req, res) {
 }
 
 // Post Build Callback
-function postBuild(err, stdout, stderr) {
+function postBuild(err, stdout, branch) {
     if (err){
         console.log(err);
     }
@@ -44,6 +41,7 @@ function postBuild(err, stdout, stderr) {
         if (err)
             console.log(err);
         else{
+            process.stdout.write("BUILD: Branch - " + branch);
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
             mailer(status, id);
