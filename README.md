@@ -1,14 +1,19 @@
 # DevOps Project
+
+##Milestone - 1 
+
+### Team
 Team Blue Drones:
  - Ankit Kumar (akumar18)
  - Vipul Kashyap (vkkashya)
- - Ashutosh Chaturvedi (achatur)
+ - Ashutosh Chaturvedi (achatur) 
 
-##Milestone - 1  
+### Screencast
+The screencast video can be found [here](https://youtu.be/bxLe2BO3UOA)
 
-###Build Section  
 
-###Objectives:
+### Build Section  
+#### Objectives:
 - [x] [Triggered Build](#1)
 - [x] [Dependency Management + Build Script Execution](#2)
 - [x] [Build Status + External Post-Build Job Triggers](#3)
