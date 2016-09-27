@@ -1,7 +1,7 @@
 # DevOps Project
 Team:
  - Ankit Kumar (akumar18)
- - Vipul Kashyap (vkashya)
+ - Vipul Kashyap (vkkashya)
  - Ashutosh Chaturvedi (achatur)
 
 # Milestones
