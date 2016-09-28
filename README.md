@@ -31,7 +31,7 @@ The post-commit hook basically opens a browser that makes a GET request to the '
 
 ####<a name="2"></a>Dependency Management + Build Script Execution  
 We used Docker to enable clean build everytime code is committed to the application. Docker is installed on our AWS server (which hosts the node.js server) and a docker image was created with dependencies in the dockerfile, which can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/build/Dockerfile).
-The docker image was generated once, which used the dockerfile to install basic dependencies. Further, on each build trigger the test-code repo is cloned, and its dependencies are install by calling ``` npm install ```. The build script handles all such calls.
+The docker image was generated once, which used the dockerfile to install basic dependencies. Further, on each build trigger the test-code repo is cloned, and its dependencies are installed by calling ``` npm install ```. The build script handles all such calls.
 Our build scripts are branch specific scripts which are triggered by [build](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/build.js) file.<br>
 
 ####<a name="3"></a>Build Status + External Post-Build Job Triggers  
@@ -43,4 +43,4 @@ There are 2 branches running for the our test-code: master and develop, hence th
 The difference between the two build scripts is that, on develop there is just one unit test, however on the master branch there are 5 unit tests. You can see the difference by seeing the number of passing and failing tests in the build log.<br>
 
 ####<a name="5"></a>Build History and Display over HTTP  
-We've created a simple UI using AngularJS and Bootstrap and then tied it to our Node.js backend to display the history of build execution with timestamp, build status, branch on which build was triggered and a link to the log file. We used mongDB to store the history, and the mongoDB server runs on the same instance as our web server. The history api implementation can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/history.js)
+We've created a simple UI using AngularJS and Bootstrap and then tied it to our Node.js backend to display the history of build execution with timestamp, build status, branch on which build was triggered and a link to the log file. We used mongoDB to store the history, and the mongoDB server runs on the same instance as our web server. The history api implementation can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m1_dev/trigger/controller/history.js)
