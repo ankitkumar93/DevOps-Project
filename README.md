@@ -4,7 +4,7 @@
 
 ### Team
 Team Blue Drones:
- - Ankit Kumar (akumar18) *(Node.js Server to trigger builds, and show history over HTTP, integration of all server components with Node.js app, Server MongoDB Setup)*
+ - Ankit Kumar (akumar18) *(Node.js Server to trigger builds, and show history over HTTP (Frontend and REST APIs), integration of all server components with Node.js app, Server MongoDB Setup)*
  - Vipul Kashyap (vkkashya) *(Build status parser, test code with unit tests, multiple branches multiple jobs)*
  - Ashutosh Chaturvedi (achatur) *(Dependency management, Build script execution using docker, Post build mailer)*
 
