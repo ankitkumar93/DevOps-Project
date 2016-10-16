@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=devide-width, initial-scale=1.0" >
+        <title> Build History </title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="components/jquery/dist/jquery.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Angular JS -->
+        <script src="components/angular/angular.min.js"></script>
+        <script src="components/angular-route/angular-route.min.js"></script>
+
+        <!-- Angular Script -->
+        <script src="js/historyApp.js"></script>
+    </head>
+
+    <body>
+        <!-- Container -->
+        <div class="container" ng-view>
+            <div class="row">
+                <h1> Build History </h1>
+            </div>
+
+            <div ng-app="historyApp">
+                <div data-ng-controller="HistoryController" data-ng-init="init()">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Timestamp</th>
+                                <th>Branch</th>
+                                <th>Status</th>
+                                <th>Log</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in history">
+                                <td>{{$index+1}}</td>
+                                <td>{{row.timestamp}}</td>
+                                <td>{{row.branch}}</td>
+                                <td>{{row.status}}</td>
+                                <td><a href="/log?id={{row.id}}">view</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div>
+            </div>
+
+        </div>
+    </body>
+</html>

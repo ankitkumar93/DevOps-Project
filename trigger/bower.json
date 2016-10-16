@@ -1,0 +1,23 @@
+{
+  "name": "trigger-milestone1",
+  "description": "Build Server Trigger",
+  "main": "server.js",
+  "authors": [
+    "Ankit Kumar"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ankitkumar93/DevOps-Project",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "angular-route": "^1.5.8"
+  }
+}
