@@ -4,12 +4,11 @@ var history = require('./history.js');
 var parse = require('./parser.js');
 var mailer = require('./mailer.js');
 
-const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/';
+const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
 
 // Pre Build Function
-function preBuild(branch){
+function preBuild(){
     console.log("BUILD: Initializing");
-    console.log("BUILD: Branch - " + branch);
 }
 
 // Build Function
@@ -21,9 +20,7 @@ function onBuild(req, res) {
     if (typeof branch == 'undefined') {
         res.send("Error: Please send a proper GET request!")
     }else{
-        preBuild(branch);
-        var cmd_name = "build_" + branch +".sh";
-        var build_cmd = build_cmd_base + cmd_name;
+        preBuild();
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
             postBuild(err, stdout, branch);
         });
@@ -46,7 +43,7 @@ function postBuild(err, stdout, branch) {
     var log = stdout;
     var status = parse(log);
 
-    history.addBuild(id, timestamp, log, status, 'develop', function(err){
+    history.addBuild(id, timestamp, log, status, branch, function(err){
         if (err)
             console.log(err);
         else{

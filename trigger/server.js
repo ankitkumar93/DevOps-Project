@@ -9,7 +9,7 @@ var history = require('./controller/history.js');
 
 // Globals
 const port = 8000;
-const db_name='build_devops';
+const db_name='devops';
 
 // Setup Express
 var app = express();
