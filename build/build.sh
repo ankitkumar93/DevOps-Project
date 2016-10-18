@@ -7,7 +7,6 @@ echo "SETUP:Finished"
 
 ## Testing
 echo "TEST:Start"
-npm test
 istanbul cover test/1-calc.js
 istanbul cover test/2-postfixer.js
 istanbul cover test/3-app.js
