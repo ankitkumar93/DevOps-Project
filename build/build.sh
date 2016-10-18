@@ -7,6 +7,7 @@ echo "SETUP:Finished"
 
 ## Testing
 echo "TEST:Start"
+
 ## Basic Testing with Coverage
 istanbul cover test/1-calc.js
 istanbul cover test/2-postfixer.js
