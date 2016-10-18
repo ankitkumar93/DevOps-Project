@@ -38,8 +38,8 @@ function checkTests(data) {
     var testStatus = (testCount == passCount);
 
     // Check Coverage
-    var statementThreshold = 0;
-    var branchThreshold = 10;
+    var statementThreshold = 30;
+    var branchThreshold = 0;
 
     var statementRegex = /Statements   : (\d+)(\.\d+)?%/g;
     var branchRegex =    /Branches     : (\d+)(\.\d+)?%/g;
