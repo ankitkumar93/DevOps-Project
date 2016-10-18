@@ -36,7 +36,7 @@ function checkTests(data) {
     var testStatus = (testCount == passCount);
 
     // Check Coverage
-    var statementThreshold = 30;
+    var statementThreshold = 0;
     var branchThreshold = 10;
 
     var statementRegex = /Statements   : (\d+)(\.\d+)?%/g;
@@ -68,9 +68,13 @@ function checkTests(data) {
 }
 
 function checkAnalysis(data) {
+    var analysisStatus = true;
+    
     // Lint
-    
-    
+    var lintRegex = /.js: /g;
+    var lints = data.match(lintRegex);
+    analysisStatus = analysisStatus && (lints == null);
+
     // Custom Metrics
     var methodLengthLimit = 50;
     var maxConditionsLimit = 7;
@@ -84,7 +88,6 @@ function checkAnalysis(data) {
     var maxConditions = data.match(maxConditionsRegex);
     var tokensDetected = data.match(tokenDetectedRegex);
 
-    var analysisStatus = true;
     for (var index in methodLengths) {
         var value = Number.parseInt(methodLengths[index].split("MethodLength: ")[1]);
         analysisStatus = analysisStatus && (value <= methodLengthLimit);
@@ -104,5 +107,4 @@ function checkAnalysis(data) {
     return analysisStatus;
 }
 
-var testString = require('fs').readFileSync('./temp.txt', 'utf8');
-console.log(checkAnalysis(testString));
+module.exports = parse;
