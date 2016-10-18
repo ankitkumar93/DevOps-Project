@@ -48,6 +48,7 @@ function ComplexityBuilder()
     this.StartLine = 0;
     this.FunctionName = "";
     this.MaxConditions = 0;
+    this.MethodLength = 0;
 
     this.report = function()
     {
@@ -55,9 +56,10 @@ function ComplexityBuilder()
            (
             "{0}(): {1}\n" +
             "============\n" +
-                "MaxConditions: {2}\n\n"
+                "MaxConditions: {2}\t" +
+                "MethodLength: {3}\n\n"
             )
-            .format(this.FunctionName, this.StartLine, this.MaxConditions)
+            .format(this.FunctionName, this.StartLine, this.MaxConditions, this.MethodLength)
         );
     }
 };
@@ -134,8 +136,9 @@ function analyse(filePath)
 
             // Function Name
             builder.FunctionName = functionName(node);
+            builder.MethodLength = node.loc.end.line - node.loc.start.line;
 
-            // Max Conditions
+            // Max Conditions && Method Length
             traverseWithParents(node, function(child){
                 if(child.type == 'IfStatement' && typeof child.test != "undefined") {
                     var maxConditions = countConditions(child.test);
