@@ -8,14 +8,19 @@ echo "SETUP:Finished"
 ## Testing
 echo "TEST:Start"
 npm test
-istanbul cover test/1-app.js
-istanbul cover test/2-calc.js
-istanbul cover test/3-postfixer.js
+istanbul cover test/1-calc.js
+istanbul cover test/2-postfixer.js
+istanbul cover test/3-app.js
 echo "TEST:Finished"
 
 ## Analysis
 echo "ANALYSIS:Start"
-jslint app.js
-jslint calc.js
-jslint postfixer.js
+jshint app.js
+jshint calc.js
+jshint postfixer.js
+
+
+node analysis.js app.js
+node analysis.js calc.js
+node analysis.js postfixer.js
 echo "ANALYSIS:Finished"

@@ -9,4 +9,4 @@ RUN apt-get -y install nodejs
 RUN apt-get -y install npm
 RUN sudo ln -s "$(which nodejs)" /usr/bin/node
 RUN npm install -g istanbul
-RUN npm install -g jslint
+RUN npm install -g jshint
