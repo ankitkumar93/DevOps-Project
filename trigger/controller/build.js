@@ -38,7 +38,6 @@ function postBuild(err, stdout, branch, res) {
     var timestamp = dateformat(now);
     var log = stdout;
     var status = parse(log);
-    var response = {"status": status};
 
     history.addBuild(id, timestamp, log, status, branch, function(err){
         if (err)
@@ -48,7 +47,7 @@ function postBuild(err, stdout, branch, res) {
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
             mailer(status, branch, id);
-            res.send(response);
+            res.send(status);
         }
     });
 

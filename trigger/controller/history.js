@@ -23,6 +23,12 @@ var historyController = {
         });
 
         buildRecord.save(callback);
+    },
+
+    getRecent: function(res){
+        historyModel.find({"sort": "timestamp"}, function(err, data){
+            res.send(data[0].id);
+        });
     }
 };
 
