@@ -42,6 +42,10 @@ app.get('/api/log/:id', function(req, res){
     history.getLog(req.params.id, res);
 });
 
+app.get('/api/recent', function(req, res){
+    history.getRecentLogID(res);
+});
+
 app.get('/api/history', function(req, res){
     history.getHistory(res);
 });
