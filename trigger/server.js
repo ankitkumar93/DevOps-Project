@@ -43,7 +43,7 @@ app.get('/api/log/:id', function(req, res){
 });
 
 app.get('/api/recent', function(req, res){
-    history.getRecentLog(res);
+    history.getRecentLogID(res);
 });
 
 app.get('/api/history', function(req, res){
