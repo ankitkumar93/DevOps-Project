@@ -22,12 +22,9 @@ function onBuild(req, res) {
     }else{
         preBuild();
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
+            res.send("blablabla");
             postBuild(err, stdout, branch);
         });
-
-        // Bind Streams
-        build_process.stdout.pipe(res);
-        build_process.stderr.pipe(process.stderr);
     }
 }
 
