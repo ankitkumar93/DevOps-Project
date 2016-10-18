@@ -26,7 +26,7 @@ var historyController = {
     },
 
     getRecentLogID: function(res){
-        historyModel.find({}, {sort:{id: -1}}, function(err, data){
+        historyModel.find({}, null, {sort: {id: 1}}, function(err, data){
             res.send(data[0]);
         });
     }
