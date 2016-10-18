@@ -4,7 +4,7 @@ var history = require('./history.js');
 var parse = require('./parser.js');
 var mailer = require('./mailer.js');
 
-const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
+const build_cmd = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
 
 // Pre Build Function
 function preBuild(){
@@ -22,8 +22,7 @@ function onBuild(req, res) {
     }else{
         preBuild();
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
-            res.send("blablabla");
-            postBuild(err, stdout, branch);
+            postBuild(err, stdout, branch, res);
         });
     }
 }
@@ -39,6 +38,7 @@ function postBuild(err, stdout, branch) {
     var timestamp = dateformat(now);
     var log = stdout;
     var status = parse(log);
+    var response = {"status": status};
 
     history.addBuild(id, timestamp, log, status, branch, function(err){
         if (err)
@@ -48,8 +48,10 @@ function postBuild(err, stdout, branch) {
             console.log("BUILD: Completed - " + timestamp);
             console.log("BUILD: Status - " + status);
             mailer(status, branch, id);
+            res.send(response);
         }
     });
+
 
 }
 
