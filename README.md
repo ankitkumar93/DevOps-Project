@@ -34,7 +34,27 @@ This entire milestone is added to our build setup from milestone 1 (which is a n
 The project we choose has a test suite of its own. It's test cases are basically covered up in 3 files under the tests directory. We are running istanbul to measure coverage, and also on running istanbul the test cases are run and the test result is reported, along with the coverage result.
 
 ####<a name="2"></a>Advanced Testing
-We are using test case generation for advanced testing. The test case generation part generates test cases for the calc.js file. Originally, the test for calc.js has a very low coverage (statement coverage of 10% and branch coverage 0%). Our generated test cases improve the coverage (statement coverage of 10% and branch coverage 0%). In our pipeline we first run istanbul for the original test for calc.js and then we generate our own test cases, through our test case generator, and then run istanbul on this new test file. This is so that we can demonstrate our implementation of advanced testing and also that it improves coverage. Our test case generator's code can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m2_dev/build/test/adv_test.js).
+We are using test case generation for advanced testing. The test case generation part generates test cases for the calc.js file. Originally, the test for calc.js has a very low coverage as below:
+```
+=============================== Coverage summary ===============================
+
+Statements   : 32.61% ( 15/46 )
+Branches     : 0% ( 0/16 )
+Functions    : 7.14% ( 1/14 )
+Lines        : 36.59% ( 15/41 )
+================================================================================
+```
+Our generated test cases improve the coverage as shown below:
+```
+=============================== Coverage summary ===============================
+
+Statements   : 62% ( 31/50 )
+Branches     : 31.25% ( 5/16 )
+Functions    : 28.57% ( 4/14 )
+Lines        : 66.67% ( 30/45 )
+================================================================================
+```
+In our pipeline we first run istanbul for the original test for calc.js and then we generate our own test cases, through our test case generator, and then run istanbul on this new test file. This is so that we can demonstrate our implementation of advanced testing and also that it improves coverage. Our test case generator's code can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m2_dev/build/test/adv_test.js).
 
 ####<a name="3"></a>Basic Analysis
 For basic analysis, we are using jhlint on our code. We have configured it so that, it allows some things (like missing semicolon), and detects and reports some other things (like const declarations). The configuration file for jhlint can be found [here](https://github.com/ankitkumar93/DevOps-Project/blob/m2_dev/build/analysis/.jshintrc)
