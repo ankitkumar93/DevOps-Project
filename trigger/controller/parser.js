@@ -10,7 +10,9 @@ function parse(data){
     var testStatus = checkTests(testData);
     var analysisStatus = checkAnalysis(analysisData);
 
-    result = (testStatus && analysisStatus);
+    if (testStatus && analysisStatus)
+        result = "success";
+
     return result;
 }
 
