@@ -45,13 +45,13 @@ function checkTests(data) {
     var statements = data.match(statementRegex);
     var branches = data.match(branchRegex);
     
-    var analysisStatus = true;
+    var coverageStatus = true;
     for (var index in statements) {
         var value = Number.parseInt(statements[index]
                                     .split("Statements   : ")[1]
                                     .split("%")[0]);
 
-        analysisStatus = analysisStatus && (value >= statementThreshold);
+        coverageStatus = coverageStatus && (value >= statementThreshold);
     }
 
     for (var index in branches) {
@@ -59,17 +59,50 @@ function checkTests(data) {
                                     .split("Branches     : ")[1]
                                     .split("%")[0]);
 
-        analysisStatus = analysisStatus && (value >= branchThreshold);
+        coverageStatus = coverageStatus && (value >= branchThreshold);
     }
 
 
-    return testStatus && analysisStatus;
+    return testStatus && coverageStatus;
 
 }
 
 function checkAnalysis(data) {
-    return true;
+    // Lint
+    
+    
+    // Custom Metrics
+    var methodLengthLimit = 50;
+    var maxConditionsLimit = 7;
+    var tokensDetectionValue = "false";
+
+    var methodLengthRegex = /MethodLength: (\d+)/g;
+    var maxConditionsRegex = /MaxConditions: (\d+)/g;
+    var tokenDetectedRegex = /Token Status:\n==============\nDetected: (\w+)/g;
+
+    var methodLengths = data.match(methodLengthRegex);
+    var maxConditions = data.match(maxConditionsRegex);
+    var tokensDetected = data.match(tokenDetectedRegex);
+
+    var analysisStatus = true;
+    for (var index in methodLengths) {
+        var value = Number.parseInt(methodLengths[index].split("MethodLength: ")[1]);
+        analysisStatus = analysisStatus && (value <= methodLengthLimit);
+    }
+
+    for (var index in maxConditions) {
+        var value = Number.parseInt(maxConditions[index].split("MaxConditions: ")[1]);
+        analysisStatus = analysisStatus && (value <= maxConditionsLimit);
+    }
+
+    for (var index in tokensDetected) {
+        var value = tokensDetected[index].split("Detected: ")[1];
+
+        analysisStatus = analysisStatus && (value == tokensDetectionValue);
+    }
+
+    return analysisStatus;
 }
 
 var testString = require('fs').readFileSync('./temp.txt', 'utf8');
-console.log(checkTests(testString));
+console.log(checkAnalysis(testString));
