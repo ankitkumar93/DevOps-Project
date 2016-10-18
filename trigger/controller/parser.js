@@ -75,7 +75,7 @@ function checkAnalysis(data) {
     // Lint
     var lintRegex = /.js: /g;
     var lints = data.match(lintRegex);
-    analysisStatus = analysisStatus && (lints == null);
+    analysisStatus = analysisStatus && (lints == null || lints.length < 10);
 
     // Custom Metrics
     var methodLengthLimit = 50;
