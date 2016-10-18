@@ -26,11 +26,7 @@ var historyController = {
     },
 
     getRecentLogID: function(res){
-        var options = {
-            "sort": "id"
-        };
-
-        historyModel.find({}, options, function(err, data){
+        historyModel.find({}, {"sort": "id"}, function(err, data){
             res.send(data[0].id);
         });
     }
