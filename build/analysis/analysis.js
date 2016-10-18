@@ -20,10 +20,27 @@ function parseArgs()
         var builder = builders[node];
         builder.report();
     }
-
 }
 
 var builders = {};
+function TokenBuilder()
+{
+    this.detected = false;
+    this.value = null;
+
+    this.report = function()
+    {
+        console.log(
+            (
+                "Token Status:\n" + 
+                "==============\n" + 
+                    "Detected: {0}\t" + 
+                    "Value: {1}\n\n"
+            )
+            .format(this.detected, this.value)
+        );
+    }
+}
 
 // Represent a reusable "class" following the Builder pattern.
 function ComplexityBuilder()
@@ -105,6 +122,7 @@ function analyse(filePath)
 {
     var buf = fs.readFileSync(filePath, "utf8");
     var ast = esprima.parse(buf, options);
+    var tokens = esprima.tokenize(buf);
 
     var i = 0;
     // Tranverse program with a function visitor.
@@ -130,6 +148,20 @@ function analyse(filePath)
             builders[builder.FunctionName] = builder;
         }
     });
+
+    var builder = new TokenBuilder();
+    builders['securityTokenDetection'] = builder;
+
+    for (var index in tokens) {
+        var token = tokens[index];
+        var tokenType = token.type;
+        var tokenValue = token.value.replace(/"/g, '');
+        if (tokenType == 'String' && tokenValue.length == 64) {
+            var builder = builders['securityTokenDetection'];
+            builder.detected = true;
+            builder.value = token.value.replace(/"/g, '');
+        }
+    }
 
 }
 
