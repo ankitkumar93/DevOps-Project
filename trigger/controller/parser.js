@@ -73,9 +73,10 @@ function checkAnalysis(data) {
     var analysisStatus = true;
     
     // Lint
+    var lintThreshhold = 20;
     var lintRegex = /.js: /g;
     var lints = data.match(lintRegex);
-    analysisStatus = analysisStatus && (lints == null || lints.length < 10);
+    analysisStatus = analysisStatus && (lints == null || lints.length < lintThreshhold);
 
     // Custom Metrics
     var methodLengthLimit = 50;
