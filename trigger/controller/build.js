@@ -28,7 +28,7 @@ function onBuild(req, res) {
 }
 
 // Post Build Callback
-function postBuild(err, stdout, branch) {
+function postBuild(err, stdout, branch, res) {
     if (err){
         console.log(err);
     }
