@@ -9,7 +9,7 @@ Team Blue Drones:
  - Ashutosh Chaturvedi (achatur)
 
 ### Screencast
-The screencast video can be found [here](https://www.youtube.com/watch?v=MlhZK269Jns)
+The screencast video can be found [here](https://youtu.be/WFULrky2Ddw)
 
 
 ### Build Section  
