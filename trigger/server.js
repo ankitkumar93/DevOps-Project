@@ -9,7 +9,7 @@ var history = require('./controller/history.js');
 
 // Globals
 const port = 8000;
-const db_name='build_devops';
+const db_name='devops';
 
 // Setup Express
 var app = express();
@@ -40,6 +40,10 @@ app.get('/build', function(req, res){
 // APIs
 app.get('/api/log/:id', function(req, res){
     history.getLog(req.params.id, res);
+});
+
+app.get('/api/recent', function(req, res){
+    history.getRecentLogID(res);
 });
 
 app.get('/api/history', function(req, res){
