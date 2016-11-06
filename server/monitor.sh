@@ -4,29 +4,25 @@
 # Globals
 CPU_LIMIT=50
 MEM_LIMIT=60
-NET_LIMIT=70
 ADMIN_EMAIL=""
 
 # Monitor
+# Reference Taken from : # http://stackoverflow.com/questions/9229333/how-to-get-overall-cpu-usage-e-g-57-on-linux
 while [ true ]; do
-		usage=$(cat /proc/loadavg)
-
-		# CPU Usage	
-		cpu_uage=$(echo $usage | cut -d ' ' -f1)
+		# CPU Usage
+		cpu_usage=$(top -bn1 | grep "Cpu(s)" | cut -d ',' -f4 | sed "s/\([0-9.]*\)* id/\1/" | sed -r "s/\s+//")
 		if [ $cpu_usage -g $CPU_LIMIT ]; then
 			mail -s "WebAPP Alert" $ADMIN_EMAIL <<< "ALERT: HIGH CPU USAGE: "$cpu_usage	
 		fi
 		
 		# Memory Usage
-		mem_uage=$(echo $usage | cut -d ' ' -f2)
+		mem_entry=$(top -bn1 | grep "KiB Mem:")
+		mem_used=$(echo $mem_entry | cut -d ',' -f2 | sed "s/\([0-9]*\)* used/\1/" | sed -r "s/\s+//")
+		mem_free=$(echo $mem_entry | cut -d ',' -f3 | sed "s/\([0-9]*\)* free/\1/" | sed -r "s/\s+//")
+		mem_total=$((mem_used+mem_free))
+		mem_usage=$((mem_used*100/mem_total))
 		if [ $mem_usage -g $MEM_LIMIT ]; then
 			mail -s "WebAPP Alert" $ADMIN_EMAIL <<< "ALERT: HIGH MEMORY USAGE: "$mem_usage	
-		fi
-		
-		# Network Usage
-		net_uage=$(echo $usage | cut -d ' ' -f3)
-		if [ $net_usage -g $NET_LIMIT ]; then
-			mail -s "WebAPP Alert" $ADMIN_EMAIL <<< "ALERT: HIGH NETWORK USAGE: "$net_usage	
 		fi
 done
 
