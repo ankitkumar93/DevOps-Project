@@ -1,0 +1,33 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update server
+      apt: update_cache=yes
+    - name: Install nodejs
+      apt: pkg=nodejs state=installed update_cache=true
+    - name: Install npm
+      apt: pkg=npm state=installed update_cache=true      
+    - name: Install git
+      apt: pkg=git state=installed update_cache=true
+    - name: Create symlink for nodejs
+      file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+    - name: Add the Redis PPA
+      apt_repository: repo='ppa:rwky/redis' update_cache=yes
+    - name: Install Redis
+      apt: pkg=redis-server state=installed
+    - name: Start Redis server
+      service: name=redis-server state=started
+    - name: "Install forever (to run server.js app)."
+      npm: name=forever global=yes state=present
+    - name: "Check list of server.js apps running."
+      command: forever list
+      register: forever_list
+      changed_when: false
+    - name: Clone the git repo
+      git: repo=https://github.com/ankitkumar93/WebApp.git dest=/home/ubuntu/WebApp
+    - name: Intall dependencies
+      npm: path=/home/ubuntu/WebApp
+    - name: "Start server.js app."
+      command: forever start /home/ubuntu/WebApp/server.js
+      when: "forever_list.stdout.find('/home/ubuntu/WebApp/server.js') == -1"
