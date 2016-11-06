@@ -1,4 +1,4 @@
-
+var jsonfile = require('jsonfile')
 var AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -20,6 +20,7 @@ var params = {
 }
 
 var inventory = "inventory"
+var configjson = "config.json"
 
 // Create the instance
 ec2.runInstances(params, function(err, data) {
@@ -48,6 +49,8 @@ var getDroplet = function(instanceId){
 			var ip_address = response.Reservations[0].Instances[0].PublicIpAddress;
 			var data = "node ansible_ssh_host=" + ip_address + " ansible_ssh_user=ubuntu ansible_ssh_private_key_file=./key/privateKey.key";
 			fs.writeFileSync(inventory, data);
+			var obj = {redis_ip: ip_address};
+			jsonfile.writeFileSync(configjson, obj, {spaces: 2});
 		}
 	});
 };
