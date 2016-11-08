@@ -1,3 +1,7 @@
+<<<<<<< HEAD:server/AWS_main.js
+=======
+var jsonfile = require('jsonfile')
+>>>>>>> 18ab95983a503f1638c67453b9416a0fcb4ad9d5:AWS_main.js
 var AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -19,6 +23,7 @@ var params = {
 }
 
 var inventory = "inventory"
+var configjson = "config.json"
 
 // Create the instance
 ec2.runInstances(params, function(err, data) {
@@ -28,7 +33,6 @@ ec2.runInstances(params, function(err, data) {
 
   var instanceId = data.Instances[0].InstanceId;
   // console.log("Created instance: ", instanceId);
-
   //getDroplet(instanceId);
   setTimeout(function() { getDroplet(instanceId); }, 5000);
 });
