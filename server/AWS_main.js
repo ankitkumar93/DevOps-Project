@@ -1,4 +1,3 @@
-
 var AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -23,12 +22,12 @@ var inventory = "inventory"
 
 // Create the instance
 ec2.runInstances(params, function(err, data) {
-  if (err) { 
-  	console.log("Could not create instance", err); return; 
+  if (err) {
+  	console.log("Could not create instance", err); return;
   }
 
   var instanceId = data.Instances[0].InstanceId;
-  console.log("Created instance: ", instanceId);
+  // console.log("Created instance: ", instanceId);
 
   //getDroplet(instanceId);
   setTimeout(function() { getDroplet(instanceId); }, 5000);
