@@ -44,10 +44,8 @@ var getDroplet = function(instanceId){
 			console.log(error);
 		}
 		else{
-			console.log(response.Reservations[0].Instances[0].PublicIpAddress);
 			var ip_address = response.Reservations[0].Instances[0].PublicIpAddress;
-			var data = "node ansible_ssh_host=" + ip_address + " ansible_ssh_user=ubuntu ansible_ssh_private_key_file=./key/privateKey.key";
-			fs.writeFileSync(inventory, data);
+			console.log(ip_address);
 		}
 	});
 };
