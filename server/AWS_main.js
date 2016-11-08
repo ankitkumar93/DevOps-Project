@@ -1,4 +1,7 @@
+<<<<<<< HEAD:server/AWS_main.js
+=======
 var jsonfile = require('jsonfile')
+>>>>>>> 18ab95983a503f1638c67453b9416a0fcb4ad9d5:AWS_main.js
 var AWS = require('aws-sdk');
 
 AWS.config.update({
@@ -24,13 +27,12 @@ var configjson = "config.json"
 
 // Create the instance
 ec2.runInstances(params, function(err, data) {
-  if (err) { 
-  	console.log("Could not create instance", err); return; 
+  if (err) {
+  	console.log("Could not create instance", err); return;
   }
 
   var instanceId = data.Instances[0].InstanceId;
-  console.log("Created instance: ", instanceId);
-
+  // console.log("Created instance: ", instanceId);
   //getDroplet(instanceId);
   setTimeout(function() { getDroplet(instanceId); }, 5000);
 });
@@ -45,12 +47,8 @@ var getDroplet = function(instanceId){
 			console.log(error);
 		}
 		else{
-			console.log(response.Reservations[0].Instances[0].PublicIpAddress);
 			var ip_address = response.Reservations[0].Instances[0].PublicIpAddress;
-			var data = "node ansible_ssh_host=" + ip_address + " ansible_ssh_user=ubuntu ansible_ssh_private_key_file=./key/privateKey.key";
-			fs.writeFileSync(inventory, data);
-			var obj = {redis_ip: ip_address};
-			jsonfile.writeFileSync(configjson, obj, {spaces: 2});
+			console.log(ip_address);
 		}
 	});
 };
