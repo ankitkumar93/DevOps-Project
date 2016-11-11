@@ -12,7 +12,7 @@ token = require('./token.js');
     Data Files (Inventory, Config, Host)
 */
 
-var config = JSON.parse(fs.readFileSync('provision/config.json', 'utf8'));
+var config = JSON.parse(fs.readFileSync('/home/ubuntu/DevOps-Project/deploy/provision/config.json', 'utf8'));
 
 var headers = {
     'Content-Type': config.contenttype,
