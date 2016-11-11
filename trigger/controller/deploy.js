@@ -3,13 +3,13 @@ var exec = require('child_process').exec;
 const deploy_cmd = 'sudo sh /home/ubuntu/DevOps-Project/deploy/prod.sh';
 
 function deploy(res) {
-    var build_process = exec(deploy_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
+    var child = exec(deploy_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
             if (err)
                 console.log(err);
     });
 
-    exec.stdout.pipe( res );
-    exec.stderr.pipe( process.stderr );
+    child.stdout.pipe( res );
+    child.stderr.pipe( process.stderr );
 }
 
 module.exports = deploy;
