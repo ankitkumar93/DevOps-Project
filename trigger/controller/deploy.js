@@ -8,8 +8,8 @@ function deploy(res) {
                 console.log(err);
     });
 
-    child.stdout.pipe( res );
-    child.stderr.pipe( process.stderr );
+    exec.stdout.pipe( res );
+    exec.stderr.pipe( process.stderr );
 }
 
 module.exports = deploy;
