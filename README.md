@@ -9,7 +9,7 @@ Team Blue Drones:
  - Ashutosh Chaturvedi (achatur)
 
 ### Screencast
-The screencast video can be found [here](https://youtu.be/WFULrky2Ddw)
+The screencast video can be found [here](https://youtu.be/xOFoJ-XROJQ)
 
 ### WebApp
 The webapp can be found [here](https://github.com/ankitkumar93/WebApp.git)  
@@ -30,9 +30,10 @@ We used our HW1 script for provisioning a server on AWS for creating new instanc
 For configuraiton management of the production servers, we used ansible. We have differend playbook for production and canary deployment.  
 
 ####<a name="3"></a>Monitoring  
-We created a bash script for monitoring the health of the AWS instance. The script monitors the CPU and Memory utilization on the server, and if reached above a predefined limit, it sends a SMS to the admin using Twilio.  
+We created a bash script for monitoring the health of the AWS instance. The script monitors the CPU and Memory utilization on the server, and if reached above a predefined limit, it sends a mail using nodemailer. 
 
-####<a name="4"></a>Autoscale  
+####<a name="4"></a>Autoscale 
+We create a new instance using digitalocean api and deploy the app on it (like for the first time) using ansible. The app adds its own IP into redis, and hence the new instance is available for use. The scale up is also on increased CPU or Memory usage.
 
 ####<a name="5"></a>Feature Flags  
 We used redis for implementing feature flags. Our feature flag, when enabled, allows the server to send its IP address to the user.  
