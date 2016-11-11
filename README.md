@@ -7,4 +7,6 @@ Team:
 # Milestones
 [Milestone - 1] (https://github.com/ankitkumar93/DevOps-Project/tree/m1)
 <br>
-[Milestone - 2] (https://github.com/ankitkumar93/DevOps-Project/tree/m2)
+[Milestone - 2] (https://github.com/ankitkumar93/DevOps-Project/tree/m2)  
+<br>
+[Milestone - 3] (https://github.com/ankitkumar93/DevOps-Project/tree/m3)
