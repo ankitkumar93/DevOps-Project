@@ -8,6 +8,7 @@ var build = require('./controller/build.js');
 var alert = require('./controller/alert.js');
 var deploy = require('./controller/deploy.js');
 var canary = require('./controller/canary.js');
+var killcanary = require('./controller/killcanary.js');
 var history = require('./controller/history.js');
 
 // Globals
@@ -59,6 +60,10 @@ app.get('/deploy', function(req, res){
 
 app.get('/canary', function(req, res){
     canary(res);
+});
+
+app.get('/killcanary/:ip', function(req, res){
+    killcanary(req.params.ip, res);
 });
 
 app.get('/alert/:st', function(req, res){
