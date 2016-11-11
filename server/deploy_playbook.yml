@@ -1,0 +1,12 @@
+---
+- hosts: appserver
+  become: yes
+  tasks:
+    - name: Clone the git repo
+      git: repo=https://github.com/ankitkumar93/WebApp.git dest=/home/ubuntu/WebApp
+    - name: Intall dependencies
+      npm: path=/home/ubuntu/WebApp
+    - name: "Start server.js app."
+      command: sudo forever start /home/ubuntu/WebApp/server.js
+      when: "forever_list.stdout.find('/home/ubuntu/WebApp/server.js') == -1"
+    - copy: src=/home/ubuntu/config.json dest=/home/ubuntu/WebApp/config.json mode=0777
