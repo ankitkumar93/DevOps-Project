@@ -4,7 +4,7 @@ var history = require('./history.js');
 var parse = require('./parser.js');
 var mailer = require('./mailer.js');
 
-const build_cmd = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build.sh';
+const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build_';
 
 // Pre Build Function
 function preBuild(){
@@ -21,6 +21,7 @@ function onBuild(req, res) {
         res.send("Error: Please send a proper GET request!")
     }else{
         preBuild();
+        var build_cmd = build_cmd_base + branch + ".sh";
         var build_process = exec(build_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
             postBuild(err, stdout, branch, res);
         });
