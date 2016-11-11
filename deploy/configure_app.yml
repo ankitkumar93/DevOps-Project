@@ -33,5 +33,3 @@
     - name: "Start server.js app."
       command: /usr/local/bin/forever start /root/WebApp/server.js
       when: "forever_list.stdout.find('/root/WebApp/server.js') == -1"
-      async: 2
-      poll: 0
