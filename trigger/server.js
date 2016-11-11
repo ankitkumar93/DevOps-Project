@@ -77,5 +77,5 @@ app.get('/alert/:st', function(req, res){
 });
 
 app.get('/feature/:ip', function(req, res){
-    alert(req.params.ip, res);
+    feature(req.params.ip, res);
 });
