@@ -5,6 +5,12 @@ var path = require('path');
 
 // Controllers
 var build = require('./controller/build.js');
+var alert = require('./controller/alert.js');
+var feature = require('./controller/feature.js');
+var deploy = require('./controller/deploy.js');
+var canary = require('./controller/canary.js');
+var scale = require('./controller/scale.js');
+var killcanary = require('./controller/killcanary.js');
 var history = require('./controller/history.js');
 
 // Globals
@@ -48,4 +54,28 @@ app.get('/api/recent', function(req, res){
 
 app.get('/api/history', function(req, res){
     history.getHistory(res);
+});
+
+app.get('/deploy', function(req, res){
+    deploy(res);
+});
+
+app.get('/canary', function(req, res){
+    canary(res);
+});
+
+app.get('/killcanary/:ip', function(req, res){
+    killcanary(req.params.ip, res);
+});
+
+app.get('/scale', function(req, res){
+    scale(res);
+});
+
+app.get('/alert/:st', function(req, res){
+    alert(req.params.st, res);
+});
+
+app.get('/feature/:ip', function(req, res){
+    feature(req.params.ip, res);
 });
