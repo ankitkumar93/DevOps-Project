@@ -24,7 +24,7 @@ The webapp can be found [here](https://github.com/ankitkumar93/WebApp.git)
 - [x] [Canary Release](#6)  
 
 ####<a name="1"></a>Automated Deployment
-We used our HW1 script for provisioning a server on AWS for creating new instances for production. The git hook triggers the script for instance creation.  
+We used Digital Ocean for creating new instances for production. The git hook triggers the script for instance creation.  
 
 ####<a name="2"></a>Configuration Management  
 For configuraiton management of the production servers, we used ansible. We have differend playbook for production and canary deployment.  
