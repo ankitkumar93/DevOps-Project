@@ -15,7 +15,5 @@ app_ip=$(node /home/ubuntu/DevOps-Project/deploy/provision/digitalocean.js)
 echo "[appserver]" >> inventory
 echo 'node3 ansible_ssh_host='$app_ip' ansible_ssh_user=root ansible_ssh_private_key_file=~/.ssh/id_rsa' >> inventory
 
-sleep 60
-
 ## Deploy
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory configure_prod.yml
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory /home/ubuntu/DevOps-Project/deploy/configure_prod.yml
