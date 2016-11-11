@@ -10,7 +10,7 @@ sleep 60
 ## Deploy
 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i canary_inventory /home/ubuntu/DevOps-Project/deploy/configure_app.yml --limit "appserver"
 
-redis_ip=$(cat config.json | jq '.REDIS_IP')
+redis_ip=$(cat config.json | jq '.REDIS_IP' | tr -d '"')
 
 #set canary_on = true on redis server
-redis-cli -h redis_ip set canary_on true
+redis-cli -h $redis_ip set canary_on true

@@ -6,6 +6,7 @@ var path = require('path');
 // Controllers
 var build = require('./controller/build.js');
 var alert = require('./controller/alert.js');
+var feature = require('./controller/feature.js');
 var deploy = require('./controller/deploy.js');
 var canary = require('./controller/canary.js');
 var scale = require('./controller/scale.js');
@@ -73,4 +74,8 @@ app.get('/scale', function(req, res){
 
 app.get('/alert/:st', function(req, res){
     alert(req.params.st, res);
+});
+
+app.get('/feature/:ip', function(req, res){
+    alert(req.params.ip, res);
 });

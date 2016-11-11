@@ -18,8 +18,6 @@
       apt: pkg=stress state=installed
     - copy: src=../trigger/config.json dest=/root/config.json mode="u=rwx,g=rx,o=rx"
     - copy: src=./monitor/monitor.sh dest=/root/monitor.sh mode=0777
-    - name: Install dependencies
-      npm: path=/root/
     - name: "Install forever (to run server.js app)."
       npm: name=forever global=yes state=present
     - name: Clone the git repo
