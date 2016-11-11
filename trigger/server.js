@@ -8,6 +8,7 @@ var build = require('./controller/build.js');
 var alert = require('./controller/alert.js');
 var deploy = require('./controller/deploy.js');
 var canary = require('./controller/canary.js');
+var scale = require('./controller/scale.js');
 var killcanary = require('./controller/killcanary.js');
 var history = require('./controller/history.js');
 
@@ -64,6 +65,10 @@ app.get('/canary', function(req, res){
 
 app.get('/killcanary/:ip', function(req, res){
     killcanary(req.params.ip, res);
+});
+
+app.get('/scale', function(req, res){
+    scale(req.params.ip, res);
 });
 
 app.get('/alert/:st', function(req, res){
