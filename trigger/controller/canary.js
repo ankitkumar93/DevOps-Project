@@ -15,7 +15,7 @@ function canary(res) {
     });
 
 
-    res.send("done");
+    res.send("Canary!");
 }
 
 module.exports = canary;

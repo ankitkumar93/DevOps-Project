@@ -14,7 +14,7 @@ function scale(res) {
         console.log(data);
     });
 
-    res.send("done");
+    res.send("Scale!");
 }
 
 module.exports = scale;

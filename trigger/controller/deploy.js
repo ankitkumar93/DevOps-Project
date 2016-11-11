@@ -14,7 +14,7 @@ function deploy(res) {
         console.log(data);
     });
 
-    res.send("done");
+    res.send("Deploy!");
 }
 
 module.exports = deploy;
