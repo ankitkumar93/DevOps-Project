@@ -65,7 +65,7 @@
       apt: name=git update_cache=true state=latest
     - name: install stress
       apt: pkg=stress state=installed
-    - copy: src=./config.json dest=/home/ubuntu/WebApp/config.json mode="u=rwx,g=rx,o=rx"
+    - copy: src=./config.json dest=/home/ubuntu/config.json mode="u=rwx,g=rx,o=rx"
     - copy: src=./monitor/monitor.sh dest=/home/ubuntu/monitor.sh mode=0777
     - copy: src=./monitor/sendSMS.js dest=/home/ubuntu/sendSMS.js mode=0777
     - copy: src=./monitor/package.json dest=/home/ubuntu/package.json mode=0777
