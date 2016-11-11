@@ -17,8 +17,6 @@ while [ true ]; do
 		if [ $cpu_usage -gt $CPU_LIMIT ]; then
 			echo $cpu_usage
 
-			#set canary_on = false on redis server
-			redis-cli -h redis_ip set canary_on false
 			node sendSMS.js -c
 		fi
 
@@ -28,8 +26,7 @@ while [ true ]; do
 		if [ $mem_use -gt $MEM_LIMIT ]; then
 			echo $mem_use
 			echo $MEM_LIMIT
-			#set canary_on = false on redis server
-			redis-cli -h redis_ip set canary_on false
+
 			node sendSMS.js -m
 		fi
 done
