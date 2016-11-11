@@ -11,3 +11,5 @@ function feature(ip, res) {
         res.send("done");
     });
 }
+
+module.exports = feature;
