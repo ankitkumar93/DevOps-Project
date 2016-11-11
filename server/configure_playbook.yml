@@ -68,15 +68,11 @@
     - copy: src=./config.json dest=/home/ubuntu/WebApp/config.json mode="u=rwx,g=rx,o=rx"
     - copy: src=./monitor/monitor.sh dest=/home/ubuntu/monitor.sh mode=0777
     - copy: src=./monitor/sendSMS.js dest=/home/ubuntu/sendSMS.js mode=0777
-    - copy: src=.monitor/package.js dest=/home/ubuntu/package.json mode=0777
-    - name: Intall dependencies
+    - copy: src=./monitor/package.json dest=/home/ubuntu/package.json mode=0777
+    - name: Install dependencies
       npm: path=/home/ubuntu/
     - name: "Install forever (to run server.js app)."
       npm: name=forever global=yes state=present
-    - name: "Check list of server.js apps running."
-      command: forever list
-      register: forever_list
-      changed_when: false
     - name: Execute the monitoring script
       command: bash /home/ubuntu/monitor.sh
       async: 2
