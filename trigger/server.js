@@ -68,7 +68,7 @@ app.get('/killcanary/:ip', function(req, res){
 });
 
 app.get('/scale', function(req, res){
-    scale(req.params.ip, res);
+    scale(res);
 });
 
 app.get('/alert/:st', function(req, res){
