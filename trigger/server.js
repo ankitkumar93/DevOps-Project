@@ -61,6 +61,6 @@ app.get('/canary', function(req, res){
     canary(res);
 });
 
-app.get('/alert/:status', function(req, res){
-    alert(status, res);
+app.get('/alert/:st', function(req, res){
+    alert(req.params.st, res);
 });
