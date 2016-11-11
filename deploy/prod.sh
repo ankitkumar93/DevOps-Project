@@ -1,5 +1,5 @@
 #!/bin/bash
-src=srcdir=$(dirname "${BASH_SOURCE[0]}")
+src=$(dirname "${BASH_SOURCE[0]}")
 
 ## Script to Deploy the Redis server to Production ##
 redis_ip=$(node $src/provision/digitalocean.js)
