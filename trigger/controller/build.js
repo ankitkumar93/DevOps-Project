@@ -51,8 +51,6 @@ function postBuild(err, stdout, branch, res) {
             res.send(status);
         }
     });
-
-
 }
 
 module.exports = onBuild;

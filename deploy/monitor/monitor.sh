@@ -5,7 +5,7 @@
 CPU_LIMIT=50
 MEM_LIMIT=80
 ADMIN_EMAIL=""
-redis_ip=$(cat config.json | jq '.REDIS_IP')
+redis_ip=$(cat config.json | jq '.REDIS_IP' | tr -d '"')
 # Monitor
 # Reference Taken from : # http://stackoverflow.com/questions/9229333/how-to-get-overall-cpu-usage-e-g-57-on-linux
 while [ true ]; do
@@ -17,7 +17,9 @@ while [ true ]; do
 		if [ $cpu_usage -gt $CPU_LIMIT ]; then
 			echo $cpu_usage
 
-			node sendSMS.js -c
+			node sendMail.js c
+
+			exit
 		fi
 
 		# Memory Usage
@@ -27,7 +29,9 @@ while [ true ]; do
 			echo $mem_use
 			echo $MEM_LIMIT
 
-			node sendSMS.js -m
+			node sendMail.js m
+
+			exit
 		fi
 done
 

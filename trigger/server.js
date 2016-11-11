@@ -5,6 +5,9 @@ var path = require('path');
 
 // Controllers
 var build = require('./controller/build.js');
+var alert = require('./controller/alert.js');
+var deploy = require('./controller/deploy.js');
+var canary = require('./controller/canary.js');
 var history = require('./controller/history.js');
 
 // Globals
@@ -48,4 +51,16 @@ app.get('/api/recent', function(req, res){
 
 app.get('/api/history', function(req, res){
     history.getHistory(res);
+});
+
+app.get('/deploy', function(req, res){
+    deploy(res);
+});
+
+app.get('/canary', function(req, res){
+    canary(res);
+});
+
+app.get('/alert/:status', function(req, res){
+    alert(status, res);
 });
