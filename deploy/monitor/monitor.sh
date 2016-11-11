@@ -13,6 +13,7 @@ while [ true ]; do
 		if [ $cpu_usage -gt $CPU_LIMIT ]; then
 
 			curl http://54.214.96.27:8000/alert/c
+			curl http://54.214.96.27:8000/scale
 
 			exit
 		fi
@@ -23,6 +24,7 @@ while [ true ]; do
 		if [ $mem_use -gt $MEM_LIMIT ]; then
 
 			curl http://54.214.96.27:8000/alert/m
+			curl http://54.214.96.27:8000/scale
 
 			exit
 		fi
