@@ -7,9 +7,7 @@ function scale(res) {
             if (err)
                 console.log(err);
     });
-
-    child.stdout.pipe( res );
-    child.stderr.pipe( process.stderr );
+    res.send("done");
 }
 
 module.exports = scale;
