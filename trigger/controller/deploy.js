@@ -9,6 +9,11 @@ function deploy(res) {
             else
                 console.log("done");
     });
+
+    child.stdout.on("data", function(data){
+        console.log(data);
+    });
+
     res.send("done");
 }
 

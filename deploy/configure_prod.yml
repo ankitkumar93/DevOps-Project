@@ -71,11 +71,11 @@
       command: forever list
       register: forever_list
       changed_when: false
+    - name : "Copy config.json to WebApp"
+      command: cp /root/config.json /root/WebApp/config.json
     - name: "Start server.js app."
       command: /usr/local/bin/forever start /root/WebApp/server.js
       when: "forever_list.stdout.find('/root/WebApp/server.js') == -1"
-    - name : "Move config.json to WebApp"
-      command: cp /root/config.json /root/WebApp/config.json
     - name: Execute the monitoring script
       command: bash /root/monitor.sh
       async: 2
