@@ -1,11 +1,7 @@
-#! /bin/bash
-# Author: Ankit Kumar (akumar18)
-
-## Data
 url="http://54.214.96.27:8000"
 url_build=$url"/build?branch="
-url_recent=$url"/api/recent"
-url_log=$url"/log?id="
+url_deploy=$url"/deploy?branch="
+url_deploy=$url"/canary"
 
 ## Pre Build
 git push
@@ -16,8 +12,10 @@ status=`curl -s $url_build$branch`
 if [ $status == "failure" ]; then
     git reset HEAD^
     git push -f
+else
+    if [ $branch == "master" ]; then
+	   curl -s $url_deploy$branch
+    else
+        curl -s $url_canary
+    fi
 fi
-
-# Post Build
-logid=`curl -s $url_recent`
-open $url_log$logid
