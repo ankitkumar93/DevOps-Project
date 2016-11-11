@@ -5,6 +5,8 @@ app_ip=$(node /home/ubuntu/DevOps-Project/deploy/provision/digitalocean.js)
 echo "[appserver]" > canary_inventory
 echo 'node3 ansible_ssh_host='$app_ip' ansible_ssh_user=root ansible_ssh_private_key_file=~/.ssh/id_rsa' >> canary_inventory
 
+sleep 60
+
 ## Deploy
 ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i canary_inventory /home/ubuntu/DevOps-Project/deploy/configure_app.yml --limit "appserver"
 
