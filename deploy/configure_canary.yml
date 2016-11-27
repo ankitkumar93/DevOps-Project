@@ -30,6 +30,3 @@
       changed_when: false
     - name : "Copy config.json to WebApp"
       command: cp /root/config.json /root/WebApp/config.json
-    - name: "Start server.js app."
-      command: /usr/local/bin/forever start /root/WebApp/server.js
-      when: "forever_list.stdout.find('/root/WebApp/server.js') == -1"
