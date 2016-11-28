@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Script to Deploy the App server to Production ##
-app_ip=$(node /home/ubuntu/DevOps-Project/deploy/provision/digitalocean.js)
+app_ip=$(node /root/DevOps-Project/deploy/provision/digitalocean.js)
 echo "[appserver]" > canary_inventory
 echo 'node ansible_ssh_host='$app_ip' ansible_ssh_user=root ansible_ssh_private_key_file=~/.ssh/id_rsa' >> canary_inventory
 

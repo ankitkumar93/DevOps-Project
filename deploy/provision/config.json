@@ -6,7 +6,7 @@
         "region":"nyc3",
         "size": "512mb",
         "image": "ubuntu-14-04-x64",
-        "ssh_keys":[3245192],
+        "ssh_keys":[4884766],
         "backups":false,
         "ipv6":false,
         "user_data":null,
