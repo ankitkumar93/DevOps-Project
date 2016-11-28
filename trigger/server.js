@@ -64,8 +64,8 @@ app.get('/canary', function(req, res){
     canary(res);
 });
 
-app.get('/killcanary/:ip', function(req, res){
-    killcanary(req.params.ip, res);
+app.get('/killcanary', function(req, res){
+    killcanary(res);
 });
 
 app.get('/scale', function(req, res){
