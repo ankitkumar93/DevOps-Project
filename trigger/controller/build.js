@@ -4,7 +4,7 @@ var history = require('./history.js');
 var parse = require('./parser.js');
 var mailer = require('./mailer.js');
 
-const build_cmd_base = 'sudo docker run -v /home/ubuntu/DevOps-Project/build/:/vol buildserver sh -c /vol/build_';
+const build_cmd_base = 'sudo docker run -v /root/DevOps-Project/build/:/vol buildserver sh -c /vol/build_';
 
 // Pre Build Function
 function preBuild(){

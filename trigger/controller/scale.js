@@ -1,6 +1,6 @@
 var exec = require('child_process').exec;
 
-const scale_cmd = 'sudo sh /home/ubuntu/DevOps-Project/deploy/app.sh';
+const scale_cmd = 'sudo sh /root/DevOps-Project/deploy/app.sh';
 
 function scale(res) {
     var child = exec(scale_cmd, {maxBuffer: 1024 * 5000}, function(err, stdout, stderr){
