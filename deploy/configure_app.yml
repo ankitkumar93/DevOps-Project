@@ -16,7 +16,7 @@
       apt: name=git update_cache=true state=latest
     - name: install stress
       apt: pkg=stress state=installed
-    - copy: src=../trigger/config.json dest=/root/config.json mode="u=rwx,g=rx,o=rx"
+    - copy: src=/root/DevOps-Project/config.json dest=/root/config.json mode="u=rwx,g=rx,o=rx"
     - copy: src=./monitor/monitor.sh dest=/root/monitor.sh mode=0777
     - name: "Install forever (to run server.js app)."
       npm: name=forever global=yes state=present
@@ -30,3 +30,6 @@
       changed_when: false
     - name : "Copy config.json to WebApp"
       command: cp /root/config.json /root/WebApp/config.json
+    - name: "Start load_balancer.js app."
+      command: /usr/local/bin/forever start /root/WebApp/server.js
+      when: "forever_list.stdout.find('/root/WebApp/server.js') == -1"
