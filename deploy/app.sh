@@ -8,4 +8,4 @@ echo 'node ansible_ssh_host='$app_ip' ansible_ssh_user=root ansible_ssh_private_
 sleep 120
 
 ## Deploy
-ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i app_inventory /home/ubuntu/DevOps-Project/deploy/configure_app.yml --limit "appserver"
+ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i app_inventory /root/DevOps-Project/deploy/configure_app.yml --limit "appserver"

@@ -12,7 +12,7 @@ while [ true ]; do
         cpu_usage=$(top -bn1 | grep "Cpu(s)" | cut -d ',' -f4 | sed "s/\([0-9.]*\)* id/\1/" | sed -r "s/\s+//")
         cpu_usage=${cpu_usage/.*}
         if [ $cpu_usage -gt $CPU_LIMIT ]; then
-            curl http://54.214.96.27:8000/killcanary/$redis_ip
+            curl http://138.197.32.179:8000/killcanary/$redis_ip
             exit
         fi
 
@@ -20,7 +20,7 @@ while [ true ]; do
         mem_use=$(free -m | awk 'NR==2{printf "%.2f", $3*100/$2 }')
         mem_use=${mem_use/.*}
         if [ $mem_use -gt $MEM_LIMIT ]; then
-            curl http://54.214.96.27:8000/killcanary/$redis_ip
+            curl http://138.197.32.179:8000/killcanary/$redis_ip
             exit
         fi
 done
