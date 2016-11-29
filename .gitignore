@@ -1,1 +1,8 @@
 bot/node_modules/
+trigger/.DS_Store
+.DS_Store
+node_modules
+data
+components
+emaik_config.js
+temp.txt
