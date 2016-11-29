@@ -7,7 +7,7 @@ echo "SETUP:Finished"
 
 ## Testing
 echo "TEST:Start"
-npm test
+grunt test
 echo "TEST:Finished"
 
 ## Analysis
