@@ -10,5 +10,7 @@ Team Blue Drones:
 
 ### Screencast
 The screencast videos can be found below:
+<b>
 [Milestone 1 to 3](https://youtu.be/kq_FXcvgwno)
+<br>
 [Milestone 4](https://youtu.be/kq_FXcvgwno)
