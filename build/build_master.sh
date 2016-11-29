@@ -7,6 +7,7 @@ echo "SETUP:Finished"
 
 ## Testing
 echo "TEST:Start"
+npm test
 echo "TEST:Finished"
 
 ## Analysis
