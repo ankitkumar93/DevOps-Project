@@ -20,7 +20,9 @@ function parse(data){
 function checkTests(data) {
     // Check Tests
     var testRegex = /(\d+) failing (\d+)/g;
-    var testStatus = data.match(testRegex);
+    var testValue = data.match(testRegex);
+    var testStatus = (testValue == null);
+
 
     // Check Coverage
     var statementThreshold = 30;
