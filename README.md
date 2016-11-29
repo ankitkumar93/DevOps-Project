@@ -1,5 +1,3 @@
-# DevOps Project
-
 ##Milestone - 4
 
 ### Team
