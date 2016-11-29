@@ -76,6 +76,6 @@ app.get('/alert/:st', function(req, res){
     alert(req.params.st, res);
 });
 
-app.get('/feature/:ip', function(req, res){
-    feature(req.params.ip, res);
+app.get('/feature', function(req, res){
+    feature(res);
 });
