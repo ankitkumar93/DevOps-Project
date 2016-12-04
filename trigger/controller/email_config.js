@@ -11,7 +11,7 @@ var email_config = {
         subjectpass: 'Build Status - Success on Branch - ',
         textfail: 'Your most recently build failed.',
         textpass: 'Your most recently build was successfull.',
-        logurl: '54.213.145.239:8000/log?id='
+        logurl: '138.197.32.179:8000/log?id='
     }
 };
 

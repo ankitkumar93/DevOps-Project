@@ -1,5 +1,3 @@
-# DevOps Project
-
 ##Milestone - 4
 
 ### Team
@@ -9,7 +7,11 @@ Team Blue Drones:
  - Ashutosh Chaturvedi (achatur)
 
 ### Screencast
-The screencast video can be found [here]()
+The screencast videos can be found below:
+<br>
+[Milestone 1 to 3](https://youtu.be/kq_FXcvgwno)
+<br>
+[Milestone 4](https://youtu.be/NnV-fjyhLJs)
 
 ### Objective  
 DevOps is a Slack Bot which is designed to run/execute/process components of Continuous Deployment. We can pass commands to DevOps from Slack channel like a normal conversation and the bot will take these instructions, translate them and invoke the related commands using the node app running in the background. DevOps make use of Watson Conversation to process the instructions given in simple language and capture the commands from the statements.

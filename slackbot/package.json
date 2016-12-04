@@ -1,0 +1,21 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "Initiate slack bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vkkashya",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/client": "^3.6.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "install": "^0.8.2",
+    "npm": "^4.0.2",
+    "request": "^2.79.0",
+    "slackbots": "^0.5.3",
+    "watson-developer-cloud": "^2.9.1"
+  }
+}

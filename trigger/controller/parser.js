@@ -19,23 +19,10 @@ function parse(data){
 
 function checkTests(data) {
     // Check Tests
-    var testRegex = /# tests (\d+)/g;
-    var passRegex = /# pass  (\d+)/g;
+    var testRegex = /(\d+) failing/g;
+    var testValue = data.match(testRegex);
+    var testStatus = (testValue == null);
 
-    var tests = data.match(testRegex);
-    var passes = data.match(passRegex);
-
-    var testCount = 0;
-    for (var index in tests) {
-        testCount += Number.parseInt(tests[index].split("# tests ")[1]);
-    }
-
-    var passCount = 0;
-    for (var index in passes) {
-        passCount += Number.parseInt(passes[index].split("# pass  ")[1]);
-    }
-
-    var testStatus = (testCount == passCount);
 
     // Check Coverage
     var statementThreshold = 30;
